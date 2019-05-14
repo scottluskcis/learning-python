@@ -4,7 +4,7 @@ students = []
 def get_students_titlecase():
     students_titlecase = []
     for student in students:
-        students_titlecase = student.get("name", "unknown").title()
+        students_titlecase.append(student["name"].title())
     return students_titlecase
 
 
@@ -18,22 +18,16 @@ def add_student(name, student_id=-1):
     students.append(student)
 
 
-def var_args(name, *args):
-    print(name)
-    print(args)
+student_list = get_students_titlecase()
 
+keep_adding_students = True
+while keep_adding_students: 
+    add_new_student = input("Do you want to add a student (yes/no): ")
+    if(add_new_student.lower().startswith("y")):
+        student_name = input("Enter student name: ")
+        student_id = input("Enter student ID: ") 
+        add_student(student_name, student_id)
+    else:
+        keep_adding_students = False
 
-def var_kwargs(name, **kwargs):
-    print(name)
-    print(kwargs["description"], kwargs["feedback"])
-
-
-# named arguments
-add_student(name="Mark", student_id=15)
 print_students_titlecase()
-
-# using variable args
-var_args("Mark", "Loves Python", None, "Hello", True)
-
-# using kwargs 
-var_kwargs("Mark", description="Loves Python", feedback=None, pluralsight_subscriber=True)
