@@ -42,6 +42,7 @@ def get_students_nested():
     students_titlecase_names = get_students_titlecase_names()
     print("Nested Function Example: {0}".format(students_titlecase_names))
 
+
 # named arguments
 add_student(name="Mark", student_id=15)
 print_students_titlecase()

@@ -18,7 +18,27 @@ def add_student(name, student_id=-1):
     students.append(student)
 
 
-student_list = get_students_titlecase()
+def save_file(student):
+    try:
+        f = open("students.txt", "a") # append text to a file using access mode a 
+        f.write(student + "\n")
+        f.close()
+    except Exception:
+        print("Could not save file")
+
+
+def read_file():
+    try:
+        f = open("students.txt", "r") # read text from a file using access mode r 
+        for student in f.readlines():
+            add_student(student)
+        f.close()
+    except Exception:
+        print("Could not read file")
+
+
+read_file()
+print_students_titlecase()
 
 keep_adding_students = True
 while keep_adding_students: 
@@ -27,7 +47,6 @@ while keep_adding_students:
         student_name = input("Enter student name: ")
         student_id = input("Enter student ID: ") 
         add_student(student_name, student_id)
+        save_file(student_name)
     else:
         keep_adding_students = False
-
-print_students_titlecase()
